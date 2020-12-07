@@ -16,7 +16,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import Pagination from '@material-ui/lab/Pagination';
-import { store } from '../_helpers';
 
 function SearchBar({ onSearchUpdate, onSearchBooks }) {
 
@@ -56,6 +55,7 @@ function SearchBar({ onSearchUpdate, onSearchBooks }) {
     };
 
     const handlePageItemsChange = async (event) => {
+      setIsLoading(true)
       const res = await onSearchBooks(term.term, 1, Number(event.target.value));
       if (!res) {
       } else {
