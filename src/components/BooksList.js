@@ -10,38 +10,43 @@ import Avatar from '@material-ui/core/Avatar';
 import BookIcon from '@material-ui/icons/BookOutlined';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import { Block } from '@material-ui/icons';
 
 const BooksList = ({ list }) => {
 
   const classes = useStyles();
   return (
     <>
-    <List className={classes.root}>
-      {(list || []).map((item) => 
-      <ListItem className={classes.list_item} key={item.id}>
-        <ListItemAvatar>
-          <Avatar>
-            <BookIcon />
-          </Avatar>
-        </ListItemAvatar>
-          <ListItemText primary={item.book_title} secondary={
-          <React.Fragment>
-              <Typography
+      <List className={classes.root}>
+        {(list || []).map((item) => 
+        <div className={classes.list_item_wrapper} key={item.id}>
+          <ListItem className={classes.list_item}>
+            <ListItemAvatar>
+              <Avatar>
+                <BookIcon />
+              </Avatar>
+            </ListItemAvatar>
+              {/* TITLE & AUTHOR */}
+              <ListItemText primary={item.book_title} secondary={
+
+                <Typography
                 component="span"
                 variant="body2"
-                className={classes.inline}
                 color="textPrimary"
-              >
-              Author(s): {item.book_author}
-              </Typography>
-              <Divider></Divider>
-              <Typography  variant="body2">Location: {item.book_publication_city}, {item.book_publication_country} </Typography>
-              <Typography  variant="body2">Year: {item.book_publication_year}</Typography>
-              <Typography  variant="body2">Pages: {item.book_pages}</Typography>
-            </React.Fragment>} />
-      </ListItem>
-    )}
-    </List>
+                >
+                  <strong>Author(s):</strong> {item.book_author}
+                </Typography>
+
+              } />
+          </ListItem>
+          <Divider></Divider>
+          {/* LOCATION, YEAR, PAGES */}
+          <Typography className={classes.subText} variant="body2"><strong>Location:</strong> {item.book_publication_city}, {item.book_publication_country}&nbsp;</Typography>
+          <Typography className={classes.subText} variant="body2"><strong>Year:</strong> {item.book_publication_year}&nbsp;</Typography>
+          <Typography className={classes.subText} variant="body2"><strong>Pages:</strong> {item.book_pages}</Typography>
+        </div>
+      )}
+      </List>
     </>
   );
 };
@@ -54,18 +59,37 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 10,
     left: '50%',
     transform: 'translate(-50% , 0%)',
-    padding: 5
+    padding: 15,
+    textAlign: 'center',
   },
-  list_item: {
+  list_item_wrapper: {
     width: '100%',
     maxWidth: '50%',
     backgroundColor: theme.palette.background.paper,
     marginTop: 10,
-    left: '50%',
-    transform: 'translate(-50% , 0%)',
+    marginLeft: '50%',
+    transform: 'translate(-50% , 0%)', 
     border: '1px solid #eaeaea',
-    padding: 5
+    padding: 15,
+    textAlign: 'center',
   },
+  list_item: {
+    width: '100%',
+    maxWidth: '100%',
+    backgroundColor: theme.palette.background.paper,
+    marginTop: 10,
+    padding: 15,
+    textAlign: 'center',
+  },
+  subText: {
+    display: 'inline-block',
+    width: '100%',
+    maxWidth: '70%',
+    backgroundColor: theme.palette.background.paper,
+    marginTop: 10,
+    color: '#464646',
+    textAlign: 'center',
+  }
 }));
 
 export default BooksList;

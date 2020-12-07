@@ -10,7 +10,7 @@ const initialState = {
   itemsPerPage: 5,
   error: "",
   text: "",
-  isLoading: true,
+  isLoading: false,
 }
 
 export const search = (state = initialState, action) => {

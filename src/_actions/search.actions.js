@@ -22,7 +22,7 @@ export const searchBooks = (text, page, itemsPerPage) => {
             },
           })
         .then(response => response.json())
-        .then(json => dispatch({ type: "SEARCH", data: json, text: text, page: page, itemsPerPage: itemsPerPage }))
+        .then(json => dispatch({ type: "SEARCH", data: json, text: text, page: page, itemsPerPage: itemsPerPage, isLoading: false }))
         .catch(err => dispatch({ type: "ERROR", msg: "Unable to fetch data", err: err }))
     }
 

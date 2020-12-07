@@ -16,16 +16,17 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import Pagination from '@material-ui/lab/Pagination';
+import { store } from '../_helpers';
 
 function SearchBar({ onSearchUpdate, onSearchBooks }) {
 
-    const state = useSelector(state => state.data)
     const [term, setTerm] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const itemsPerPageArray = [ 5, 10, 20, 40, 50, 100 ];
     const classes = useStyles();
 
     var text = useSelector(state => state.text);
-    var isLoading = useSelector(state => state.isLoading);
+
     var list = useSelector(state => state.search.data.books);
     var count = useSelector(state => state.search.data.count);
     var page = useSelector(state => state.search.page);
@@ -35,17 +36,31 @@ function SearchBar({ onSearchUpdate, onSearchBooks }) {
       setTerm({term: e.target.value})
       onSearchUpdate(e.target.value);
     };
-
-    const searchText = (e) => {
-      onSearchBooks(term.term, Number(page), Number(itemsPerPage));
+    
+    const searchText = async (e) => {
+      setIsLoading(true)
+      const res = await onSearchBooks(term.term, Number(page), Number(itemsPerPage));
+      if (!res) {
+      } else {
+        setIsLoading(false)
+      }
     };
 
     const handlePageChange = async (event, value) => {
-      onSearchBooks(term.term, Number(value), Number(itemsPerPage));
+      setIsLoading(true)
+      const res = await onSearchBooks(term.term, Number(value), Number(itemsPerPage));
+      if (!res) {
+      } else {
+        setIsLoading(false)
+      }
     };
 
     const handlePageItemsChange = async (event) => {
-      onSearchBooks(term.term, 1, Number(event.target.value));
+      const res = await onSearchBooks(term.term, 1, Number(event.target.value));
+      if (!res) {
+      } else {
+        setIsLoading(false)
+      }
     };
 
   return (
