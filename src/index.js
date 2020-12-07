@@ -16,5 +16,4 @@ ReactDOM.render(
 );
 
 // Start measuring performance in the app,
-// log results
 // reportWebVitals(console.log);

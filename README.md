@@ -17,24 +17,6 @@ to run the production build from a stati server please run the following command
   npm install -g serve
   serve -s build
 
-
-# dev notes:
-# start
-
-to start the development server please run
-
-npm run start
-
-
-# test
-
-to run a test please run
-
-npm run test.
-
-type 'a' afterwards to run all tests.
-
-
 # application
 
 this is a single page application based on the API provided for the test.
@@ -54,3 +36,33 @@ Once search results have loaded you may select how many items you wish to displa
 
 Once search results have loaded there should be a pagination control along the bottom of the page.
 Cick a number to load a different page of search results.
+
+
+# DEVELOPER NOTES:
+# start
+
+to start the development server please run
+
+npm run start
+
+# Data
+
+A JSON copy of a standard API search result can be found in ./api/data.json
+
+# SEARCH ACTION - test
+
+the search action test can be found in ./tests/search.actions.test.js
+
+to run the test please run
+
+npm run test.
+
+then type 'a' afterwards to run all tests (This will include the standard App.test.js ).
+
+# reportWebVitals
+
+reportWebVitals.js can be used with console.log() in index.js like so to start measuring performance in the app:
+
+reportWebVitals(console.log);
+
+
