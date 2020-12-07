@@ -38,7 +38,7 @@ function SearchBar({ onSearchUpdate, onSearchBooks }) {
     
     const searchText = async (e) => {
       setIsLoading(true)
-      const res = await onSearchBooks(term.term, Number(page), Number(itemsPerPage));
+      const res = await onSearchBooks(term.term, 1, Number(itemsPerPage));
       if (!res) {
       } else {
         setIsLoading(false)
