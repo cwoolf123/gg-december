@@ -20,7 +20,7 @@ import Pagination from '@material-ui/lab/Pagination';
 function SearchBar({ onSearchUpdate, onSearchBooks }) {
 
     const [term, setTerm] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const itemsPerPageArray = [ 5, 10, 20, 40, 50, 100 ];
     const classes = useStyles();
 
