@@ -1,0 +1,19 @@
+{ "env": { 
+    "es6": true 
+  }, 
+  "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true
+      }
+  },
+    "rules": {
+      "no-restricted-imports": [
+        "error",
+        {
+          "patterns": ["@material-ui/*/*/*", "!@material-ui/core/test-utils/*"]
+        }
+      ]
+    }
+  }

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`async actions creates SEARCH response when mock search has been completed 1`] = `
+Array [
+  Object {
+    "data": Object {
+      "books": Array [
+        Object {
+          "book_author": Array [
+            "Author",
+          ],
+          "book_pages": 104,
+          "book_publication_city": "City",
+          "book_publication_country": "Country",
+          "book_publication_year": 1529,
+          "book_title": "Example",
+          "id": 2086,
+        },
+      ],
+      "count": 1,
+    },
+    "type": "SEARCH",
+  },
+]
+`;
